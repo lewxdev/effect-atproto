@@ -1,0 +1,41 @@
+name: Work item
+description: Plan or implement a repo change.
+title: ""
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why this exists.
+      placeholder: This change is needed because...
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What should change.
+      placeholder: |
+        - Add...
+        - Update...
+        - Avoid...
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance
+      description: Concrete checks that make the issue done.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Links, constraints, open questions, or follow-up risks.
+      placeholder: https://atproto.com/specs/...
+    validations:
+      required: false

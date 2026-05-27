@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/@effect/language-service/schema.json",
+  "extends": "@tsconfig/bun",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "@effect/language-service"
+      }
+    ]
+  }
+}
