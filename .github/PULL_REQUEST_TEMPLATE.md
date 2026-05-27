@@ -1,10 +1,10 @@
 ## Summary
 
-- 
+-
 
 ## Verification
 
-- 
+-
 
 ## Issue
 

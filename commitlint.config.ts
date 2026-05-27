@@ -8,9 +8,9 @@ const config: UserConfig = {
     "type-enum": [
       2,
       "always",
-      ["feat", "fix", "docs", "test", "refactor", "chore"]
-    ]
-  }
+      ["feat", "fix", "docs", "test", "refactor", "chore"],
+    ],
+  },
 };
 
 export default config;
