@@ -1,3 +1,7 @@
+## Project Workflow
+
+Read `CONTRIBUTING.md` before making changes. Commit messages, pull request titles, and pull request bodies must follow its rules.
+
 ## Effect Best Practices
 
 **IMPORTANT:** Always consult effect-solutions before writing Effect code.
