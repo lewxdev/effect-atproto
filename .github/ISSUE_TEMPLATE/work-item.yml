@@ -1,6 +1,6 @@
 name: Work item
 description: Plan or implement a repo change.
-title: "<type>: <summary>"
+title: ""
 body:
   - type: textarea
     id: context

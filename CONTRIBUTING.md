@@ -2,7 +2,7 @@
 
 ## Format
 
-Issue titles, commit messages, and pull request titles use the Commitlint rule in `commitlint.config.ts`.
+Commit messages and pull request titles use the Commitlint rule in `commitlint.config.ts`.
 
 ```text
 <type>: <summary>
