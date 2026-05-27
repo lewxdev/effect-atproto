@@ -1,31 +1,12 @@
 # Contributing
 
-## Shared Format
+## Format
 
-Use Conventional Commit style for issue titles, commit messages, and pull request titles.
-Headers must be lowercase.
+Issue titles, commit messages, and pull request titles use the Commitlint rule in `commitlint.config.ts`.
 
 ```text
 <type>: <summary>
 ```
-
-Examples:
-
-```text
-docs: document atproto source boundaries
-feat: load query procedure schemas
-test: cover auth header construction
-chore: add contribution templates
-```
-
-## Types
-
-- `feat`: user-facing SDK behavior
-- `fix`: bug fix
-- `docs`: documentation only
-- `test`: tests only
-- `refactor`: behavior-preserving code change
-- `chore`: repo, tooling, or maintenance
 
 ## Issue Body
 
