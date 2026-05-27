@@ -1,7 +1,8 @@
 {
-  // see: https://www.effect.solutions/tsconfig
   "$schema": "./node_modules/@effect/language-service/schema.json",
   "compilerOptions": {
+    // see: https://www.effect.solutions/tsconfig
+
     // Build Performance
     "incremental": true,
     "composite": true,
