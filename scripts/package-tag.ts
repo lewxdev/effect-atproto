@@ -12,5 +12,6 @@ const output = `name=${name}\nversion=${version}\ntag=${tag}\n`;
 if (process.env.GITHUB_OUTPUT === undefined) {
   process.stdout.write(output);
 } else {
-  await Bun.write(process.env.GITHUB_OUTPUT, output);
+  const file = Bun.file(process.env.GITHUB_OUTPUT);
+  await Bun.write(process.env.GITHUB_OUTPUT, `${await file.text()}${output}`);
 }
