@@ -1,6 +1,9 @@
 node_modules/
 dist/
 coverage/
-packages/*/docs/
-docs/api/
+packages/*/docs/**
+docs/**
+!docs/
+!docs/_config.yml
+!docs/index.md
 *.tsbuildinfo

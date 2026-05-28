@@ -14,7 +14,7 @@
   "scripts": {
     "build": "bun run --filter='@effect-atproto/*' build",
     "docgen": "bun run --filter='@effect-atproto/*' docgen",
-    "docs:site": "rm -rf docs/api && mkdir -p docs/api/syntax && cp -R packages/syntax/docs/. docs/api/syntax/",
+    "docs:site": "bun scripts/docs-site.js",
     "fmt": "dprint fmt",
     "fmt:check": "dprint check",
     "prepare": "bun scripts/prepare.sh",
