@@ -1,0 +1,63 @@
+{
+  "name": "@effect-atproto/syntax",
+  "version": "0.0.0",
+  "description": "Effect schemas and syntax helpers for AT Protocol identifiers.",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://github.com/lewxdev/effect-atproto#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lewxdev/effect-atproto.git",
+    "directory": "packages/syntax"
+  },
+  "keywords": [
+    "atproto",
+    "bluesky",
+    "effect",
+    "schema"
+  ],
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./Did": {
+      "types": "./dist/Did.d.ts",
+      "import": "./dist/Did.js"
+    },
+    "./Handle": {
+      "types": "./dist/Handle.d.ts",
+      "import": "./dist/Handle.js"
+    },
+    "./Nsid": {
+      "types": "./dist/Nsid.d.ts",
+      "import": "./dist/Nsid.js"
+    },
+    "./RecordKey": {
+      "types": "./dist/RecordKey.d.ts",
+      "import": "./dist/RecordKey.js"
+    },
+    "./Tid": {
+      "types": "./dist/Tid.d.ts",
+      "import": "./dist/Tid.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "docgen": "docgen --src src --out docs --exclude 'src/internal/**/*.ts' && cd ../.. && dprint fmt --allow-no-files 'packages/syntax/docs/**/*.md' 'packages/syntax/docs/**/*.yml'",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "effect": "4.0.0-beta.71"
+  }
+}
