@@ -7,7 +7,7 @@
   "homepage": "https://github.com/lewxdev/effect-atproto#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/lewxdev/effect-atproto.git",
+    "url": "git+https://github.com/lewxdev/effect-atproto.git",
     "directory": "packages/syntax"
   },
   "keywords": [
