@@ -1,7 +1,7 @@
 const [tag] = Bun.argv.slice(2);
 
 if (tag === undefined) {
-  console.error("usage: bun scripts/check-package-tag.js <tag>");
+  console.error("usage: bun scripts/check-package-tag.ts <tag>");
   process.exit(1);
 }
 

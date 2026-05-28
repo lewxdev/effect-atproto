@@ -37,10 +37,10 @@ jobs:
       - run: bun run ts:check
       - name: Read package tag
         id: package
-        run: bun scripts/package-tag.js packages/syntax
+        run: bun scripts/package-tag.ts packages/syntax
       - name: Check package tag
         id: tag
-        run: bun scripts/check-package-tag.js "${{ steps.package.outputs.tag }}"
+        run: bun scripts/check-package-tag.ts "${{ steps.package.outputs.tag }}"
       - name: Dry-run pack
         if: steps.tag.outputs.exists == 'false'
         working-directory: packages/syntax
