@@ -3,13 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "fmt": "dprint fmt",
     "fmt:check": "dprint check",
     "prepare": "bun scripts/prepare.sh",
+    "release": "bun run --sequential ts:check fmt:check release:publish",
+    "release:publish": "changeset publish",
+    "release:version": "changeset version",
     "ts:check": "tsc --noEmit"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.31.0",
     "@commitlint/cli": "^21.0.1",
     "@commitlint/types": "^21.0.1",
     "@effect/language-service": "^0.86.2",
