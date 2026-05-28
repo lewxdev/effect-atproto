@@ -35,5 +35,5 @@
       }
     ]
   },
-  "exclude": ["vendor"]
+  "exclude": ["node_modules", "vendor", "**/docs"]
 }
