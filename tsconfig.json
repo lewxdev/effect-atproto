@@ -27,6 +27,7 @@
     "declarationMap": true,
     "sourceMap": true,
     "skipLibCheck": true,
+    "types": ["bun"],
 
     // Effect Integration
     "plugins": [
