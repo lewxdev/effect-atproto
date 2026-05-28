@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "bun run --filter='@effect-atproto/*' build",
-    "check:peers": "bash scripts/check-peers.sh",
+    "check:peers": "bun scripts/check-peers.js",
     "docgen": "bun run --filter='@effect-atproto/*' docgen",
     "fmt": "dprint fmt",
     "fmt:check": "dprint check",

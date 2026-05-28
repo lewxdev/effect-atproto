@@ -1,7 +1,7 @@
 {
   "name": "@effect-atproto/syntax",
   "version": "0.0.0",
-  "description": "Effect schemas and syntax helpers for AT Protocol identifiers.",
+  "description": "Effect schemas for atproto identifiers and syntax formats.",
   "type": "module",
   "license": "MIT",
   "homepage": "https://github.com/lewxdev/effect-atproto#readme",
@@ -12,9 +12,15 @@
   },
   "keywords": [
     "atproto",
-    "bluesky",
-    "effect",
-    "schema"
+    "did",
+    "nsid",
+    "effect"
+  ],
+  "tags": [
+    "atproto",
+    "did",
+    "nsid",
+    "effect"
   ],
   "sideEffects": false,
   "files": [
@@ -54,8 +60,8 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "docgen": "docgen --src src --out docs --exclude 'src/internal/**/*.ts' && cd ../.. && dprint fmt --allow-no-files 'packages/syntax/docs/**/*.md' 'packages/syntax/docs/**/*.yml'",
-    "test": "vitest run"
+    "docgen": "bun ../../scripts/docgen.js .",
+    "test": "vitest run --passWithNoTests"
   },
   "peerDependencies": {
     "effect": "4.0.0-beta.71"
