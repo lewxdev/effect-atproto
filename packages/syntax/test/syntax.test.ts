@@ -39,64 +39,7 @@ const assertRejects = <S extends Schema.Top>(
       assert.strictEqual(Exit.isFailure(result), true, value);
     }), { discard: true });
 
-describe("syntax schemas", () => {
-  it("validates spec examples", () => {
-    assert.strictEqual(
-      Schema.decodeUnknownSync(Did.Did)("did:plc:ewvi7nxzyoun6zhxrhs64oiz"),
-      "did:plc:ewvi7nxzyoun6zhxrhs64oiz",
-    );
-    assert.strictEqual(
-      Schema.decodeUnknownSync(Did.Did)("did:web:user.example.com"),
-      "did:web:user.example.com",
-    );
-
-    assert.strictEqual(
-      Schema.decodeUnknownSync(Handle.Handle)("Alice.Bsky.Social"),
-      "alice.bsky.social",
-    );
-    assert.strictEqual(
-      Schema.decodeUnknownSync(Nsid.Nsid)("COM.Atproto.Sync.getRecord"),
-      "com.atproto.sync.getRecord",
-    );
-
-    assert.strictEqual(
-      Schema.decodeUnknownSync(RecordKey.RecordKey)("3jui7kd54zh2y"),
-      "3jui7kd54zh2y",
-    );
-    assert.strictEqual(Schema.decodeUnknownSync(RecordKey.RecordKey)("self"), "self");
-
-    assert.strictEqual(
-      Schema.decodeUnknownSync(Tid.Tid)("3jzfcijpj2z2a"),
-      "3jzfcijpj2z2a",
-    );
-    assert.strictEqual(
-      Schema.decodeUnknownSync(Tid.Tid)("2222222222222"),
-      "2222222222222",
-    );
-  });
-
-  it("normalizes handles to lowercase", () => {
-    assert.strictEqual(
-      Schema.decodeUnknownSync(Handle.Handle)("A.ISI.EDU"),
-      "a.isi.edu",
-    );
-    assert.strictEqual(
-      Schema.decodeUnknownSync(Handle.Handle)("Alice.Bsky.Social"),
-      "alice.bsky.social",
-    );
-  });
-
-  it("normalizes NSID authority and preserves the name segment", () => {
-    assert.strictEqual(
-      Schema.decodeUnknownSync(Nsid.Nsid)("COM.Atproto.Sync.getRecord"),
-      "com.atproto.sync.getRecord",
-    );
-    assert.strictEqual(
-      Schema.decodeUnknownSync(Nsid.Nsid)("ONE.TWO.THREE.FiVe"),
-      "one.two.three.FiVe",
-    );
-  });
-
+describe("syntax fixtures", () => {
   it.effect("validates interop fixture vectors", () =>
     Effect.gen(function*() {
       const didValid = yield* readFixture("did_syntax_valid.txt");

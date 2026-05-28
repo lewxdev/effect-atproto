@@ -34,5 +34,6 @@
         "name": "@effect/language-service"
       }
     ]
-  }
+  },
+  "exclude": ["vendor"]
 }
