@@ -7,22 +7,30 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "bun run --filter='@effect-atproto/*' build",
+    "check:peers": "bash scripts/check-peers.sh",
+    "docgen": "bun run --filter='@effect-atproto/*' docgen",
     "fmt": "dprint fmt",
     "fmt:check": "dprint check",
     "prepare": "bun scripts/prepare.sh",
-    "release": "bun run --sequential ts:check fmt:check release:publish",
+    "release": "bun run --sequential check:peers ts:check fmt:check build release:publish",
     "release:publish": "changeset publish",
     "release:version": "changeset version",
+    "test": "bun run --filter='@effect-atproto/*' test",
     "ts:check": "tsc --noEmit"
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.0",
     "@commitlint/cli": "^21.0.1",
     "@commitlint/types": "^21.0.1",
+    "@effect/docgen": "^0.5.2",
     "@effect/language-service": "^0.86.2",
+    "@effect/platform-bun": "4.0.0-beta.71",
+    "@effect/vitest": "4.0.0-beta.71",
     "dprint": "^0.54.0",
     "effect": "4.0.0-beta.71",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
   },
   "devEngines": {
     "runtime": {
