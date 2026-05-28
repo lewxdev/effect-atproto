@@ -37,23 +37,10 @@ jobs:
       - run: bun run ts:check
       - name: Read package tag
         id: package
-        run: |
-          name="$(bun -e 'const p = await Bun.file("packages/syntax/package.json").json(); console.log(p.name)')"
-          version="$(bun -e 'const p = await Bun.file("packages/syntax/package.json").json(); console.log(p.version)')"
-          tag="${name}@${version}"
-          {
-            echo "name=${name}"
-            echo "version=${version}"
-            echo "tag=${tag}"
-          } >> "$GITHUB_OUTPUT"
+        run: bun scripts/package-tag.js packages/syntax
       - name: Check package tag
         id: tag
-        run: |
-          if git ls-remote --exit-code --tags origin "refs/tags/${{ steps.package.outputs.tag }}" >/dev/null 2>&1; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
+        run: bun scripts/check-package-tag.js "${{ steps.package.outputs.tag }}"
       - name: Dry-run pack
         if: steps.tag.outputs.exists == 'false'
         working-directory: packages/syntax

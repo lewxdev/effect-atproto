@@ -14,8 +14,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  version:
-    name: version packages
+  validate:
+    name: validate release inputs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -31,6 +31,19 @@ jobs:
       - run: bun run docgen
       - run: bun run fmt:check
       - run: bun run ts:check
+
+  version:
+    name: version packages
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile
       - name: Create or update Version Packages pull request
         uses: changesets/action@v1
         with:
