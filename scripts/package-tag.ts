@@ -1,7 +1,7 @@
 const [workspace] = Bun.argv.slice(2);
 
 if (workspace === undefined) {
-  console.error("usage: bun scripts/package-tag.js <workspace>");
+  console.error("usage: bun scripts/package-tag.ts <workspace>");
   process.exit(1);
 }
 
