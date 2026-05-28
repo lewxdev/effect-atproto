@@ -46,9 +46,57 @@ changes that do not affect the published package. In that case, write
 Release flow:
 
 1. Merge feature pull requests with their changesets.
-2. Run `bun run release:version` to consume changesets and update versions.
+2. Let the `release-pr` workflow open or update `chore: version packages`.
 3. Review and merge the version pull request.
-4. Run `bun run release` from the release commit to publish.
+4. Run the `publish` workflow from the release commit on `main`.
+
+The release PR workflow validates the repo and versions packages only. It does
+not publish.
+
+The `publish` workflow is manual. It validates the repo, dry-runs package
+packing with npm through Bun, checks whether the Changesets package tag already
+exists, publishes only when the tag is missing, pushes the Changesets tag, and
+creates a GitHub Release.
+
+Before npm trusted publishing is configured, add a temporary `NPM_TOKEN` secret.
+After the package has a trusted publisher configured on npm, remove the token.
+The workflow uses GitHub-hosted runners and `id-token: write`; npm exchanges the
+OIDC token during `npm publish` and creates provenance for public packages.
+
+Optional hardening: configure the `npm-publish` GitHub environment with required
+reviewers.
+
+### Packing
+
+Inspect package contents before publishing from the package directory:
+
+```sh
+bun run build
+bunx npm@latest pack --dry-run --json --workspaces=false
+```
+
+Expected package contents:
+
+- `LICENSE.md`, copied from the root license when the package does not inherit
+  it through the published tarball.
+- `README.md`.
+- Compiled `dist/*` public modules and declarations.
+- Compiled `dist/internal/*` modules only when public compiled modules import
+  them.
+
+Do not ship generated docs, source fixtures, unrelated submodule files, root
+repo metadata, or test files. Internal modules may be present in `dist` for
+runtime imports, but they must not be public package exports or generated API
+docs.
+
+### ATProto Interop Submodule
+
+Update `vendor/atproto-interop-tests` intentionally. In the same PR, update any
+test expectations that changed because of the new fixture revision.
+
+Preserve fixture license and attribution notes when copying or documenting
+fixtures. Do not vendor generated package docs or unrelated fixture data into
+the published package.
 
 ## Commits
 
