@@ -60,7 +60,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "docgen": "bun ../../scripts/docgen.js .",
+    "docgen": "bun ../../scripts/docgen.ts .",
     "test": "vitest run --passWithNoTests"
   },
   "peerDependencies": {

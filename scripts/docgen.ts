@@ -1,7 +1,7 @@
 const [workspace] = Bun.argv.slice(2);
 
 if (workspace === undefined) {
-  console.error("usage: bun scripts/docgen.js <workspace>");
+  console.error("usage: bun scripts/docgen.ts <workspace>");
   process.exit(1);
 }
 
