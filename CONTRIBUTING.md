@@ -77,12 +77,12 @@ Inspect package contents before publishing:
 
 ```sh
 bun run build
-bun scripts/pack-package-dry-run.sh packages/syntax .artifacts
+cd packages/syntax
+bun pm pack --destination ../../.artifacts --dry-run
 ```
 
-Use the repo script instead of packing from the package directory directly. It
-stages the package and replaces the workspace catalog peer dependency with the
-concrete root `effect` version before packing.
+Bun rewrites workspace catalog dependencies to concrete versions in the packed
+tarball.
 
 Expected package contents:
 
