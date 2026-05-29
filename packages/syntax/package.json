@@ -64,6 +64,6 @@
     "test": "vitest run --passWithNoTests"
   },
   "peerDependencies": {
-    "effect": "4.0.0-beta.71"
+    "effect": "catalog:"
   }
 }

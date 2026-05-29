@@ -3,17 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "catalog": {
+      "effect": "4.0.0-beta.71"
+    }
+  },
   "scripts": {
     "build": "bun run --filter='@effect-atproto/*' build",
-    "check:peers": "bun scripts/check-peers.sh",
     "docgen": "bun run --filter='@effect-atproto/*' docgen",
     "fmt": "dprint fmt",
     "fmt:check": "dprint check",
     "prepare": "bun scripts/prepare.sh",
-    "release": "bun run --sequential check:peers ts:check fmt:check build release:publish",
+    "release": "bun run --sequential ts:check fmt:check build release:publish",
     "release:publish": "changeset publish",
     "release:version": "changeset version",
     "test": "bun run --filter='@effect-atproto/*' test",
