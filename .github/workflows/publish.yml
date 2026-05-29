@@ -39,11 +39,11 @@ jobs:
         run: bun scripts/check-package-tag.sh "${{ steps.package.outputs.tag }}" >> "$GITHUB_OUTPUT"
       - name: Dry-run pack
         if: steps.tag.outputs.exists == 'false'
-        run: bun scripts/pack-package-dry-run.sh packages/syntax .artifacts
+        run: cd packages/syntax && bun pm pack --destination ../../.artifacts --dry-run
       - name: Pack package
         id: pack
         if: steps.tag.outputs.exists == 'false'
-        run: bun scripts/pack-package.sh packages/syntax .artifacts
+        run: cd packages/syntax && bun pm pack --destination ../../.artifacts
       - name: Configure temporary npm token
         if: steps.tag.outputs.exists == 'false' && env.NPM_TOKEN != ''
         run: printf '//registry.npmjs.org/:_authToken=%s\n' "$NPM_TOKEN" > ~/.npmrc
