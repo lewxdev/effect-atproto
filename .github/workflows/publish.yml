@@ -56,7 +56,7 @@ jobs:
       - name: Push Changesets tag
         if: steps.tag.outputs.exists == 'false'
         run: |
-          bunx changeset tag
+          bun run changeset:tag
           git push origin "refs/tags/${{ steps.package.outputs.tag }}"
       - name: Create GitHub Release
         if: steps.tag.outputs.exists == 'false'

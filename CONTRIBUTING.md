@@ -30,7 +30,7 @@ Every pull request should include:
 
 Use Changesets for any change that should appear in a release.
 
-Run `bun changeset`, choose the package bump, and commit the generated file
+Run `bun run changeset`, choose the package bump, and commit the generated file
 under `.changeset/`.
 
 Use:
