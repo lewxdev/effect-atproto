@@ -59,7 +59,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc",
     "test": "vitest run --passWithNoTests"
   },
   "peerDependencies": {

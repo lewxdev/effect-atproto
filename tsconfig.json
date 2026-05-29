@@ -1,39 +1,16 @@
 {
-  "$schema": "./node_modules/@effect/language-service/schema.json",
+  "extends": "./tsconfig.base.json",
+  "references": [
+    {
+      "path": "tsconfig.packages.json"
+    }
+  ],
+  "include": ["packages/*/test/**/*.ts"],
   "compilerOptions": {
-    // see: https://www.effect.solutions/tsconfig
-
-    // Build Performance
-    "incremental": true,
-    "composite": true,
-
-    // Module System
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleDetection": "force",
-
-    // Import Handling
-    "verbatimModuleSyntax": true,
-    "rewriteRelativeImportExtensions": true,
-
-    // Type Safety
-    "strict": true,
-    "exactOptionalPropertyTypes": true,
-    "noUnusedLocals": true,
-    "noImplicitOverride": true,
-
-    // Development
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
-
-    // Effect Integration
-    "plugins": [
-      {
-        "name": "@effect/language-service"
-      }
-    ]
+    "rootDir": ".",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "rewriteRelativeImportExtensions": false
   },
   "exclude": ["node_modules", "vendor"]
 }

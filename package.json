@@ -19,7 +19,7 @@
     "fmt:check": "dprint check",
     "prepare": "bun scripts/prepare.sh",
     "test": "bun run --filter='@effect-atproto/*' test",
-    "ts:check": "tsc --noEmit"
+    "ts:check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.0",
