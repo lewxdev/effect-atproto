@@ -38,7 +38,6 @@ jobs:
       - uses: ./.github/actions/setup
       - run: bun run build
       - run: bun run docgen
-      - run: bun run docs:site
       - uses: actions/jekyll-build-pages@v1
         with:
           source: ./docs

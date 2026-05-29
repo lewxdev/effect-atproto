@@ -16,7 +16,6 @@
     "changeset": "changeset",
     "commitlint": "commitlint",
     "docgen": "bun run --filter='@effect-atproto/*' docgen",
-    "docs:site": "bun scripts/docs-site.sh",
     "fmt": "dprint fmt",
     "fmt:check": "dprint check",
     "prepare": "bun scripts/prepare.sh",
