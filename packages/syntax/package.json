@@ -45,9 +45,9 @@
       "types": "./dist/Nsid.d.ts",
       "import": "./dist/Nsid.js"
     },
-    "./RecordKey": {
-      "types": "./dist/RecordKey.d.ts",
-      "import": "./dist/RecordKey.js"
+    "./Rkey": {
+      "types": "./dist/Rkey.d.ts",
+      "import": "./dist/Rkey.js"
     },
     "./Tid": {
       "types": "./dist/Tid.d.ts",

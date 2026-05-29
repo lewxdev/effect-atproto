@@ -30,11 +30,11 @@ export * as Handle from "./Handle.js";
 export * as Nsid from "./Nsid.js";
 
 /**
- * Record key syntax module.
+ * Rkey syntax module.
  *
  * @since 0.1.0
  */
-export * as RecordKey from "./RecordKey.js";
+export * as Rkey from "./Rkey.ts";
 
 /**
  * TID syntax module.
