@@ -30,8 +30,8 @@ Every pull request should include:
 
 Use Changesets for any change that should appear in a release.
 
-Run `bun run changeset`, choose the package bump, and commit the generated file
-under `.changeset/`.
+During development, run `bun run changeset`, choose the package bump, and commit
+the generated file under `.changeset/`.
 
 Use:
 
@@ -46,7 +46,8 @@ changes that do not affect the published package. In that case, write
 Release flow:
 
 1. Merge feature pull requests with their changesets.
-2. Let the `release-pr` workflow open or update `chore: version packages`.
+2. Let the `release-pr` workflow open or update `chore: version packages` with
+   `bunx changeset version`.
 3. Review and merge the version pull request.
 4. Run the `publish` workflow from the release commit on `main`.
 
@@ -54,9 +55,13 @@ The release PR workflow validates the repo and versions packages only. It does
 not publish.
 
 The `publish` workflow is manual. It validates the repo, dry-runs package
-packing with npm through Bun, checks whether the Changesets package tag already
-exists, publishes only when the tag is missing, pushes the Changesets tag, and
-creates a GitHub Release.
+packing, checks whether the Changesets package tag already exists, publishes
+only when the tag is missing, creates the Changesets tag with `bunx changeset
+tag`, pushes it, and creates a GitHub Release.
+
+There is no local release script. Use GitHub Actions for versioning and
+publishing so the workflow, package tag check, provenance setup, and GitHub
+Release creation stay in one place.
 
 Before npm trusted publishing is configured, add a temporary `NPM_TOKEN` secret.
 After the package has a trusted publisher configured on npm, remove the token.
@@ -68,12 +73,16 @@ reviewers.
 
 ### Packing
 
-Inspect package contents before publishing from the package directory:
+Inspect package contents before publishing:
 
 ```sh
 bun run build
-bunx npm@latest pack --dry-run --json --workspaces=false
+bun scripts/pack-package-dry-run.sh packages/syntax .artifacts
 ```
+
+Use the repo script instead of packing from the package directory directly. It
+stages the package and replaces the workspace catalog peer dependency with the
+concrete root `effect` version before packing.
 
 Expected package contents:
 
