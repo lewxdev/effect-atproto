@@ -45,4 +45,12 @@ jobs:
           submodules: true
       - uses: ./.github/actions/setup
       - run: bun run build
+
+  docgen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+      - uses: ./.github/actions/setup
       - run: bun run docgen
