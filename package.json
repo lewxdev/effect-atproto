@@ -15,7 +15,7 @@
     "build": "bun run --filter='@effect-atproto/*' build",
     "changeset": "changeset",
     "commitlint": "commitlint",
-    "docgen": "bun run --filter='@effect-atproto/*' docgen",
+    "docgen": "bun scripts/docs.ts",
     "fmt": "dprint fmt",
     "fmt:check": "dprint check",
     "prepare": "bun scripts/prepare.sh",
@@ -31,6 +31,7 @@
     "@effect/platform-bun": "4.0.0-beta.71",
     "@effect/vitest": "4.0.0-beta.71",
     "dprint": "^0.54.0",
+    "effect": "catalog:",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },
