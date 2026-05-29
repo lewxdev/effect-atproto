@@ -8,13 +8,12 @@ fi
 name="$(bun pm pkg get name --cwd "$workspace" | cut -d '"' -f 2)"
 version="$(bun pm pkg get version --cwd "$workspace" | cut -d '"' -f 2)"
 tag="$name@$version"
+filename="$(echo "$name" | sed 's#^@##; s#/#-#')-$version.tgz"
+tarball=".artifacts/$filename"
 output="name=$name
 version=$version
 tag=$tag
+tarball=$tarball
 "
 
-if [ -z "$GITHUB_OUTPUT" ]; then
-  printf '%s' "$output"
-else
-  printf '%s' "$output" >> "$GITHUB_OUTPUT"
-fi
+printf '%s' "$output"

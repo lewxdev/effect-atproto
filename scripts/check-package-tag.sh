@@ -11,8 +11,4 @@ else
   exists=false
 fi
 
-if [ -z "$GITHUB_OUTPUT" ]; then
-  echo "exists=$exists"
-else
-  echo "exists=$exists" >> "$GITHUB_OUTPUT"
-fi
+echo "exists=$exists"
