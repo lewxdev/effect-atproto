@@ -25,10 +25,7 @@ jobs:
           submodules: true
       - name: Require main
         run: test "$GITHUB_REF_NAME" = "main"
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.3.14
-      - run: bun install --frozen-lockfile
+      - uses: ./.github/actions/setup
       - run: bun run test
       - run: bun run fmt:check
       - run: bun run ts:check
