@@ -14,20 +14,11 @@ bun add @effect-atproto/syntax effect
 
 ## Imports
 
-Import the schema you need from its module and use the standard
-`effect/Schema` helpers.
+Import the schema you need and use the standard `effect/Schema` helpers.
 
 ```ts
-import { Did } from "@effect-atproto/syntax/Did";
+import { Did } from "@effect-atproto/syntax";
 import * as Schema from "effect/Schema";
-```
-
-The root module also exposes module namespaces:
-
-```ts
-import * as Syntax from "@effect-atproto/syntax";
-
-Syntax.Did.Did;
 ```
 
 ## Examples
