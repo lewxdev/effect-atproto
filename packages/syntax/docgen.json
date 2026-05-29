@@ -2,7 +2,7 @@
   "$schema": "../../node_modules/@effect/docgen/schema.json",
   "projectHomepage": "https://github.com/lewxdev/effect-atproto/tree/main/packages/syntax",
   "srcDir": "src",
-  "outDir": "../../docs/api/syntax",
+  "outDir": "../../docs/syntax",
   "exclude": ["src/internal/**/*.ts"],
   "enforceDescriptions": true,
   "enforceExamples": false,

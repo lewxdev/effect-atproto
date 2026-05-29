@@ -4,4 +4,4 @@ Effect packages for AT Protocol.
 
 ## Packages
 
-- [@effect-atproto/syntax](./api/syntax/)
+- [@effect-atproto/syntax](./syntax/)
