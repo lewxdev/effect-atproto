@@ -11,8 +11,8 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup
-      - run: bunx --bun commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}"
-      - run: printf '%s\n' "$PR_TITLE" | bunx --bun commitlint
+      - run: bun run commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}"
+      - run: printf '%s\n' "$PR_TITLE" | bun run commitlint
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
 

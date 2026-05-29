@@ -13,6 +13,9 @@
   },
   "scripts": {
     "build": "bun run --filter='@effect-atproto/*' build",
+    "changeset": "changeset",
+    "changeset:tag": "changeset tag",
+    "commitlint": "commitlint",
     "docgen": "bun run --filter='@effect-atproto/*' docgen",
     "docs:site": "bun scripts/docs-site.sh",
     "fmt": "dprint fmt",
