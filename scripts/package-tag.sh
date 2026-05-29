@@ -5,8 +5,8 @@ if [ -z "$workspace" ]; then
   exit 1
 fi
 
-name="$(bun -e 'const p = await Bun.file(process.argv[1]).json(); console.log(p.name)' "$workspace/package.json")"
-version="$(bun -e 'const p = await Bun.file(process.argv[1]).json(); console.log(p.version)' "$workspace/package.json")"
+name="$(bun pm pkg get name --cwd "$workspace" | cut -d '"' -f 2)"
+version="$(bun pm pkg get version --cwd "$workspace" | cut -d '"' -f 2)"
 tag="$name@$version"
 output="name=$name
 version=$version
