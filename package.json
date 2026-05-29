@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "bun run --filter='@effect-atproto/*' build",
-    "check:peers": "bun scripts/check-peers.ts",
+    "check:peers": "bun scripts/check-peers.sh",
     "docgen": "bun run --filter='@effect-atproto/*' docgen",
     "fmt": "dprint fmt",
     "fmt:check": "dprint check",
@@ -27,7 +27,6 @@
     "@effect/language-service": "^0.86.2",
     "@effect/platform-bun": "4.0.0-beta.71",
     "@effect/vitest": "4.0.0-beta.71",
-    "@types/bun": "1.3.14",
     "dprint": "^0.54.0",
     "effect": "4.0.0-beta.71",
     "typescript": "^6.0.3",
