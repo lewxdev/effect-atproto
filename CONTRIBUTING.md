@@ -93,10 +93,9 @@ Expected package contents:
 - Compiled `dist/internal/*` modules only when public compiled modules import
   them.
 
-Do not ship generated docs, source fixtures, unrelated submodule files, root
-repo metadata, or test files. Internal modules may be present in `dist` for
-runtime imports, but they must not be public package exports or generated API
-docs.
+Do not ship source fixtures, unrelated submodule files, root repo metadata, or
+test files. Internal modules may be present in `dist` for runtime imports, but
+they must not be public package exports.
 
 ### ATProto Interop Submodule
 
@@ -104,8 +103,7 @@ Update `vendor/atproto-interop-tests` intentionally. In the same PR, update any
 test expectations that changed because of the new fixture revision.
 
 Preserve fixture license and attribution notes when copying or documenting
-fixtures. Do not vendor generated package docs or unrelated fixture data into
-the published package.
+fixtures. Do not vendor unrelated fixture data into the published package.
 
 ## Commits
 

@@ -26,7 +26,6 @@ jobs:
       - run: bun run fmt:check
       - run: bun run ts:check
       - run: bun run build
-      - run: bun run docgen
 
   version:
     name: version packages
