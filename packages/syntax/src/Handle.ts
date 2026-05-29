@@ -3,19 +3,29 @@
  *
  * @since 0.1.0
  */
+
 import type * as Brand from "effect/Brand";
+import * as Function from "effect/Function";
 import * as Schema from "effect/Schema";
 import * as SchemaTransformation from "effect/SchemaTransformation";
 
-const HANDLE_PATTERN = /^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/;
+/**
+ * Runtime brand identifier used for `Handle` identifiers.
+ *
+ * @category type IDs
+ * @since 0.1.0
+ */
+export const HandleTypeId: HandleTypeId = "@effect-atproto/syntax/Handle";
 
-const NormalizedHandle = Schema.String.check(
-  Schema.isMaxLength(253),
-  Schema.isPattern(HANDLE_PATTERN, {
-    expected: "a handle",
-  }),
-  Schema.isLowercased(),
-);
+/**
+ * Brand identifier used for `Handle` identifiers.
+ *
+ * @category type IDs
+ * @since 0.1.0
+ */
+export type HandleTypeId = "@effect-atproto/syntax/Handle";
+
+const HANDLE_PATTERN = /^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/;
 
 /**
  * Handle syntax.
@@ -27,9 +37,16 @@ const NormalizedHandle = Schema.String.check(
  *
  * @since 0.1.0
  */
-export const Handle: Schema.Codec<Handle, string> = Schema.String.pipe(
-  Schema.decodeTo(NormalizedHandle, SchemaTransformation.toLowerCase()),
-  Schema.brand("Handle"),
+export const Handle: Schema.Codec<Handle, string> = Function.pipe(
+  Schema.String,
+  Schema.decode(
+    SchemaTransformation.toLowerCase(),
+  ),
+  Schema.check(
+    Schema.isMaxLength(253),
+    Schema.isPattern(HANDLE_PATTERN, { expected: "a valid handle" }),
+  ),
+  Schema.brand(HandleTypeId),
 );
 
 /**
@@ -38,4 +55,4 @@ export const Handle: Schema.Codec<Handle, string> = Schema.String.pipe(
  * @since 0.1.0
  * @ignore
  */
-export type Handle = Brand.Branded<string, "Handle">;
+export type Handle = Brand.Branded<string, HandleTypeId>;

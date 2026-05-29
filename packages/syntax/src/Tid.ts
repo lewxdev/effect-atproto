@@ -3,8 +3,26 @@
  *
  * @since 0.1.0
  */
+
 import type * as Brand from "effect/Brand";
+import * as Function from "effect/Function";
 import * as Schema from "effect/Schema";
+
+/**
+ * Runtime brand identifier used for `Tid` identifiers.
+ *
+ * @category type IDs
+ * @since 0.1.0
+ */
+export const TidTypeId: TidTypeId = "@effect-atproto/syntax/Tid";
+
+/**
+ * Brand identifier used for `Tid` identifiers.
+ *
+ * @category type IDs
+ * @since 0.1.0
+ */
+export type TidTypeId = "@effect-atproto/syntax/Tid";
 
 const TID_PATTERN = /^[234567abcdefghij][234567abcdefghijklmnopqrstuvwxyz]{12}$/;
 
@@ -19,11 +37,13 @@ const TID_PATTERN = /^[234567abcdefghij][234567abcdefghijklmnopqrstuvwxyz]{12}$/
  *
  * @since 0.1.0
  */
-export const Tid: Schema.Codec<Tid, string> = Schema.String.check(
-  Schema.isPattern(TID_PATTERN, {
-    expected: "a TID",
-  }),
-).pipe(Schema.brand("Tid"));
+export const Tid: Schema.Codec<Tid, string> = Function.pipe(
+  Schema.String,
+  Schema.check(
+    Schema.isPattern(TID_PATTERN, { expected: "a valid TID" }),
+  ),
+  Schema.brand(TidTypeId),
+);
 
 /**
  * Timestamp identifier type.
@@ -31,4 +51,4 @@ export const Tid: Schema.Codec<Tid, string> = Schema.String.check(
  * @since 0.1.0
  * @ignore
  */
-export type Tid = Brand.Branded<string, "Tid">;
+export type Tid = Brand.Branded<string, TidTypeId>;

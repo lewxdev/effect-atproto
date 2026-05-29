@@ -67,13 +67,13 @@ const nsid = Schema.decodeUnknownSync(Nsid)("COM.Atproto.Sync.getRecord");
 
 Spec: https://atproto.com/specs/nsid
 
-### RecordKey
+### Rkey
 
 ```ts
-import { RecordKey } from "@effect-atproto/syntax/RecordKey";
+import { Rkey } from "@effect-atproto/syntax/Rkey";
 import * as Schema from "effect/Schema";
 
-const recordKey = Schema.decodeUnknownSync(RecordKey)("3jui7kd54zh2y");
+const rkey = Schema.decodeUnknownSync(Rkey)("3jui7kd54zh2y");
 ```
 
 Spec: https://atproto.com/specs/record-key
