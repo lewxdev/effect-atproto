@@ -1,0 +1,6 @@
+{
+  "$schema": "../../node_modules/@effect/docgen/schema.json",
+  "srcDir": "src",
+  "outDir": "docs",
+  "exclude": ["src/internal/**/*.ts"]
+}
