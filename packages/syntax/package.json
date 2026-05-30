@@ -44,9 +44,7 @@
     }
   },
   "files": [
-    "dist",
-    "LICENSE.md",
-    "README.md"
+    "dist"
   ],
   "scripts": {
     "build": "tsc",
