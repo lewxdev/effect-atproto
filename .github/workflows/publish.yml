@@ -41,6 +41,6 @@ jobs:
         if: steps.changesets.outputs.pending == 'false' && env.NPM_TOKEN != ''
         run: printf '//registry.npmjs.org/:_authToken=%s\n' "$NPM_TOKEN" > ~/.npmrc
       - if: steps.changesets.outputs.pending == 'false'
-        run: bun run changeset:publish
+        run: bun run changeset publish
       - if: steps.changesets.outputs.pending == 'false'
         run: git push --follow-tags

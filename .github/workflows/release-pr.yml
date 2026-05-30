@@ -39,7 +39,7 @@ jobs:
       - name: Create or update Version Packages pull request
         uses: changesets/action@v1
         with:
-          version: bun run changeset:version
+          version: bun run changeset version
           title: "chore: version packages"
           commit: "chore: version packages"
         env:
