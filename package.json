@@ -6,10 +6,7 @@
   "workspaces": {
     "packages": [
       "packages/*"
-    ],
-    "catalog": {
-      "effect": "4.0.0-beta.71"
-    }
+    ]
   },
   "scripts": {
     "build": "bun run --filter='@effect-atproto/*' build",
@@ -29,6 +26,7 @@
     "@effect/platform-bun": "4.0.0-beta.71",
     "@effect/vitest": "4.0.0-beta.71",
     "dprint": "^0.54.0",
+    "effect": "4.0.0-beta.71",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },

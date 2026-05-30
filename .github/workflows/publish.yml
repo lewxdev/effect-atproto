@@ -65,11 +65,8 @@ jobs:
       - name: Publish package
         if: steps.changesets.outputs.pending == 'false' && steps.package.outputs.published == 'false'
         run: |
-          mkdir -p "$RUNNER_TEMP/publish"
-          cd packages/syntax
-          tarball="$(bun pm pack --destination "$RUNNER_TEMP/publish" --quiet | tr -d '[:space:]')"
           cd "$RUNNER_TEMP"
-          npm publish "$tarball" --access public
+          npm publish "$GITHUB_WORKSPACE/packages/syntax" --access public
       - name: Push Changesets tags
         if: steps.changesets.outputs.pending == 'false'
         run: |

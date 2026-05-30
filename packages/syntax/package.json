@@ -51,7 +51,7 @@
     "test": "vitest run"
   },
   "peerDependencies": {
-    "effect": "catalog:"
+    "effect": "4.0.0-beta.71"
   },
   "publishConfig": {
     "access": "public"
