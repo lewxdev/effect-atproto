@@ -1,7 +1,9 @@
 name: publish
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -22,46 +24,23 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          submodules: true
-      - name: Require main
-        run: test "$GITHUB_REF_NAME" = "main"
       - uses: ./.github/actions/setup
-      - run: bun run test
-      - run: bun run fmt:check
-      - run: bun run ts:check
-      - run: bun run build
-      - name: Read package tag
-        id: package
-        run: bun scripts/package-tag.sh packages/syntax >> "$GITHUB_OUTPUT"
-      - name: Check package tag
-        id: tag
-        run: bun scripts/check-package-tag.sh "${{ steps.package.outputs.tag }}" >> "$GITHUB_OUTPUT"
-      - name: Dry-run pack
-        if: steps.tag.outputs.exists == 'false'
-        run: cd packages/syntax && bun pm pack --destination ../../.artifacts --dry-run
-      - name: Pack package
-        id: pack
-        if: steps.tag.outputs.exists == 'false'
-        run: cd packages/syntax && bun pm pack --destination ../../.artifacts
-      - name: Configure temporary npm token
-        if: steps.tag.outputs.exists == 'false' && env.NPM_TOKEN != ''
-        run: printf '//registry.npmjs.org/:_authToken=%s\n' "$NPM_TOKEN" > ~/.npmrc
-      - name: Publish with temporary token
-        if: steps.tag.outputs.exists == 'false' && env.NPM_TOKEN != ''
-        run: bunx npm@latest publish "${{ steps.package.outputs.tarball }}" --provenance --access public
-      - name: Publish with trusted publishing
-        if: steps.tag.outputs.exists == 'false' && env.NPM_TOKEN == ''
-        run: bunx npm@latest publish "${{ steps.package.outputs.tarball }}" --access public
-      - name: Push Changesets tag
-        if: steps.tag.outputs.exists == 'false'
+      - name: Check for pending changesets
+        id: changesets
         run: |
-          bunx changeset tag
-          git push origin "refs/tags/${{ steps.package.outputs.tag }}"
-      - name: Create GitHub Release
-        if: steps.tag.outputs.exists == 'false'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "${{ steps.package.outputs.tag }}" --title "${{ steps.package.outputs.tag }}" --generate-notes
-      - name: Skip existing package tag
-        if: steps.tag.outputs.exists == 'true'
-        run: echo "Skipping publish because tag ${{ steps.package.outputs.tag }} already exists."
+          if find .changeset -maxdepth 1 -name '*.md' -print -quit | grep -q .; then
+            echo "pending=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "pending=false" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.changesets.outputs.pending == 'false'
+        run: bun run build
+      - if: steps.changesets.outputs.pending == 'false'
+        run: npm install --global npm@latest
+      - name: Configure temporary npm token
+        if: steps.changesets.outputs.pending == 'false' && env.NPM_TOKEN != ''
+        run: printf '//registry.npmjs.org/:_authToken=%s\n' "$NPM_TOKEN" > ~/.npmrc
+      - if: steps.changesets.outputs.pending == 'false'
+        run: bunx changeset publish
+      - if: steps.changesets.outputs.pending == 'false'
+        run: git push --follow-tags
