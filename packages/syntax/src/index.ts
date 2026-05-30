@@ -34,7 +34,7 @@ export * as Nsid from "./Nsid.js";
  *
  * @since 0.1.0
  */
-export * as Rkey from "./Rkey.ts";
+export * as Rkey from "./Rkey.js";
 
 /**
  * TID syntax module.
