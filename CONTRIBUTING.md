@@ -8,30 +8,16 @@ Commit messages and pull request titles use the Commitlint rule in `commitlint.c
 <type>: <summary>
 ```
 
-## Issue Body
+## Issues and Pull Requests
 
-Every implementation issue should include:
-
-- `Context`: why this exists
-- `Scope`: what changes
-- `Acceptance`: concrete done checks
-- `Notes`: links, constraints, or follow-up risks
-
-## Pull Request Body
-
-Every pull request should include:
-
-- `Summary`: what changed
-- `Verification`: commands run, or `Not run` with reason
-- `Changeset`: changeset added, or `Not needed` with reason
-- `Issue`: linked issue, when available
+Use the repository issue and pull request templates.
 
 ## Changesets
 
 Use Changesets for any change that should appear in a release.
 
-Run `bun changeset`, choose the package bump, and commit the generated file
-under `.changeset/`.
+During development, run `bun run changeset`, choose the package bump, and commit
+the generated file under `.changeset/`.
 
 Use:
 
@@ -43,12 +29,25 @@ Skip a changeset for documentation-only, test-only, formatting, CI, or tooling
 changes that do not affect the published package. In that case, write
 `Changeset: Not needed` in the pull request body.
 
-Release flow:
+## Releases
 
-1. Merge feature pull requests with their changesets.
-2. Run `bun run release:version` to consume changesets and update versions.
-3. Review and merge the version pull request.
-4. Run `bun run release` from the release commit to publish.
+After feature pull requests merge, the `release-pr` workflow opens or updates
+`chore: version packages`. Merge that pull request to publish automatically from
+`main`.
+
+Do not publish locally. The `publish` workflow uses `bun run changeset publish` and
+npm trusted publishing.
+
+Before npm trusted publishing is configured, add a temporary `NPM_TOKEN` secret.
+After the package has a trusted publisher configured on npm, remove the token.
+
+## ATProto Interop Submodule
+
+Update `vendor/atproto-interop-tests` intentionally. In the same PR, update any
+test expectations that changed because of the new fixture revision.
+
+Preserve fixture license and attribution notes when copying or documenting
+fixtures. Do not vendor unrelated fixture data into the published package.
 
 ## Commits
 

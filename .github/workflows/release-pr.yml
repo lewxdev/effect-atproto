@@ -1,0 +1,46 @@
+name: release-pr
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: release-pr-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: validate release inputs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+      - uses: ./.github/actions/setup
+      - run: bun run test
+      - run: bun run fmt:check
+      - run: bun run ts:check
+      - run: bun run build
+
+  version:
+    name: version packages
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+      - uses: ./.github/actions/setup
+      - name: Create or update Version Packages pull request
+        uses: changesets/action@v1
+        with:
+          version: bun run changeset version
+          title: "chore: version packages"
+          commit: "chore: version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

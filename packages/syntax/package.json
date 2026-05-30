@@ -1,0 +1,59 @@
+{
+  "name": "@effect-atproto/syntax",
+  "version": "0.0.0",
+  "description": "Effect schemas for atproto identifiers and syntax formats.",
+  "keywords": [
+    "atproto",
+    "did",
+    "nsid",
+    "effect"
+  ],
+  "homepage": "https://github.com/lewxdev/effect-atproto#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lewxdev/effect-atproto.git",
+    "directory": "packages/syntax"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./Did": {
+      "types": "./dist/Did.d.ts",
+      "import": "./dist/Did.js"
+    },
+    "./Handle": {
+      "types": "./dist/Handle.d.ts",
+      "import": "./dist/Handle.js"
+    },
+    "./Nsid": {
+      "types": "./dist/Nsid.d.ts",
+      "import": "./dist/Nsid.js"
+    },
+    "./Rkey": {
+      "types": "./dist/Rkey.d.ts",
+      "import": "./dist/Rkey.js"
+    },
+    "./Tid": {
+      "types": "./dist/Tid.d.ts",
+      "import": "./dist/Tid.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "effect": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
