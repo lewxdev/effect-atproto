@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "packages/*/package.json"
 
 permissions:
   contents: write
@@ -47,28 +45,8 @@ jobs:
       - name: Configure temporary npm token
         if: steps.changesets.outputs.pending == 'false' && env.NPM_TOKEN != ''
         run: printf '//registry.npmjs.org/:_authToken=%s\n' "$NPM_TOKEN" > ~/.npmrc
-      - name: Check package version
+      - name: Publish packages
         if: steps.changesets.outputs.pending == 'false'
-        id: package
-        run: |
-          name="$(bun pm pkg get name --cwd packages/syntax | tr -d '"')"
-          version="$(bun pm pkg get version --cwd packages/syntax | tr -d '"')"
-          if output="$(cd "$RUNNER_TEMP" && npm view "$name@$version" version --json 2>&1)"; then
-            published=true
-          elif grep -q E404 <<< "$output"; then
-            published=false
-          else
-            printf '%s\n' "$output"
-            exit 1
-          fi
-          echo "published=$published" >> "$GITHUB_OUTPUT"
-      - name: Publish package
-        if: steps.changesets.outputs.pending == 'false' && steps.package.outputs.published == 'false'
-        run: |
-          cd "$RUNNER_TEMP"
-          npm publish "$GITHUB_WORKSPACE/packages/syntax" --access public
-      - name: Push Changesets tags
-        if: steps.changesets.outputs.pending == 'false'
-        run: |
-          bun run changeset tag
-          git push --follow-tags
+        run: bun run changeset publish
+      - if: steps.changesets.outputs.pending == 'false'
+        run: git push --follow-tags
