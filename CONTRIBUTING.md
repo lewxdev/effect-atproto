@@ -35,7 +35,7 @@ After feature pull requests merge, the `release-pr` workflow opens or updates
 `chore: version packages`. Merge that pull request to publish automatically from
 `main`.
 
-Do not publish locally. The `publish` workflow uses `bun run changeset publish` and
+Do not publish locally. The `publish` workflow packs with Bun and publishes with
 npm trusted publishing.
 
 Before npm trusted publishing is configured, add a temporary `NPM_TOKEN` secret.
