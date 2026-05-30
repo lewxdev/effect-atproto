@@ -1,5 +1,11 @@
 # @effect-atproto/syntax
 
+## 0.1.1
+
+### Patch Changes
+
+- f5c6864: Publish TypeScript sources alongside compiled JavaScript and sourcemaps.
+
 ## 0.1.0
 
 ### Minor Changes
