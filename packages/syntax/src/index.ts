@@ -13,32 +13,32 @@
  *
  * @since 0.1.0
  */
-export * as Did from "./Did.js";
+export * as Did from "./Did.ts";
 
 /**
  * Handle syntax module.
  *
  * @since 0.1.0
  */
-export * as Handle from "./Handle.js";
+export * as Handle from "./Handle.ts";
 
 /**
  * NSID syntax module.
  *
  * @since 0.1.0
  */
-export * as Nsid from "./Nsid.js";
+export * as Nsid from "./Nsid.ts";
 
 /**
  * Rkey syntax module.
  *
  * @since 0.1.0
  */
-export * as Rkey from "./Rkey.js";
+export * as Rkey from "./Rkey.ts";
 
 /**
  * TID syntax module.
  *
  * @since 0.1.0
  */
-export * as Tid from "./Tid.js";
+export * as Tid from "./Tid.ts";
