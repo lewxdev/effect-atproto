@@ -27,8 +27,6 @@
     "rootDir": "${configDir}/src",
     "outDir": "${configDir}/dist",
     "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
     "skipLibCheck": true,
 
     // Effect Integration
