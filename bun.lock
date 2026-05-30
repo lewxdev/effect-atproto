@@ -12,6 +12,7 @@
         "@effect/platform-bun": "4.0.0-beta.71",
         "@effect/vitest": "4.0.0-beta.71",
         "dprint": "^0.54.0",
+        "effect": "4.0.0-beta.71",
         "typescript": "^6.0.3",
         "vitest": "^4.1.7",
       },
@@ -20,12 +21,9 @@
       "name": "@effect-atproto/syntax",
       "version": "0.0.0",
       "peerDependencies": {
-        "effect": "catalog:",
+        "effect": "4.0.0-beta.71",
       },
     },
-  },
-  "catalog": {
-    "effect": "4.0.0-beta.71",
   },
   "packages": {
     "@babel/code-frame": ["@babel/code-frame@7.29.7", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.29.7", "js-tokens": "^4.0.0", "picocolors": "^1.1.1" } }, "sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw=="],
