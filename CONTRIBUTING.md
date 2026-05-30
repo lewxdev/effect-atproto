@@ -31,11 +31,11 @@ changes that do not affect the published package. In that case, write
 
 ## Releases
 
-After feature pull requests merge, the `release-pr` workflow opens or updates
+After feature pull requests merge, the `release` workflow opens or updates
 `chore: version packages`. Merge that pull request to publish automatically from
 `main`.
 
-Do not publish locally. The `publish` workflow uses npm trusted publishing.
+Do not publish locally. The `release` workflow uses npm trusted publishing.
 
 Before npm trusted publishing is configured, add a temporary `NPM_TOKEN` secret.
 After the package has a trusted publisher configured on npm, remove the token.
