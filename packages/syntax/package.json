@@ -2,32 +2,21 @@
   "name": "@effect-atproto/syntax",
   "version": "0.0.0",
   "description": "Effect schemas for atproto identifiers and syntax formats.",
-  "type": "module",
-  "license": "MIT",
-  "homepage": "https://github.com/lewxdev/effect-atproto#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/lewxdev/effect-atproto.git",
-    "directory": "packages/syntax"
-  },
   "keywords": [
     "atproto",
     "did",
     "nsid",
     "effect"
   ],
-  "tags": [
-    "atproto",
-    "did",
-    "nsid",
-    "effect"
-  ],
+  "homepage": "https://github.com/lewxdev/effect-atproto#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lewxdev/effect-atproto.git",
+    "directory": "packages/syntax"
+  },
+  "license": "MIT",
   "sideEffects": false,
-  "files": [
-    "dist",
-    "LICENSE.md",
-    "README.md"
-  ],
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -52,17 +41,21 @@
     "./Tid": {
       "types": "./dist/Tid.d.ts",
       "import": "./dist/Tid.js"
-    },
-    "./package.json": "./package.json"
+    }
   },
-  "publishConfig": {
-    "access": "public"
-  },
+  "files": [
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run"
   },
   "peerDependencies": {
     "effect": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
