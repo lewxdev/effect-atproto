@@ -4,7 +4,7 @@ Effect schemas for AT Protocol syntax strings.
 
 This package is syntax-only. It validates and normalizes string syntax; it does
 not perform identity resolution, make network requests, generate TIDs, or expose
-`AtUri`, `Cid`, or `AtIdentifier` schemas.
+a `Cid` schema.
 
 ## Install
 
@@ -22,6 +22,31 @@ import * as Schema from "effect/Schema";
 ```
 
 ## Examples
+
+### AtIdentifier
+
+```ts
+import { AtIdentifier } from "@effect-atproto/syntax/AtIdentifier";
+import * as Schema from "effect/Schema";
+
+const identifier = Schema.decodeUnknownSync(AtIdentifier)("Alice.Bsky.Social");
+// "alice.bsky.social"
+```
+
+Spec: https://atproto.com/specs/at-uri-scheme#restricted-at-uri-syntax
+
+### AtUri
+
+<!-- dprint-ignore -->
+```ts
+import { AtUriFromString } from "@effect-atproto/syntax/AtUri";
+import * as Schema from "effect/Schema";
+
+const uri = Schema.decodeUnknownSync(AtUriFromString)("at://Alice.Bsky/COM.X.post/3jui");
+// { authority: "alice.bsky", collection: "com.x.post", rkey: "3jui" }
+```
+
+Spec: https://atproto.com/specs/at-uri-scheme#restricted-at-uri-syntax
 
 ### Did
 

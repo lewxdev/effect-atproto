@@ -9,6 +9,20 @@
  */
 
 /**
+ * AT Protocol identifier syntax module.
+ *
+ * @since 0.2.0
+ */
+export * as AtIdentifier from "./AtIdentifier.ts";
+
+/**
+ * AT URI syntax module.
+ *
+ * @since 0.2.0
+ */
+export * as AtUri from "./AtUri.ts";
+
+/**
  * DID syntax module.
  *
  * @since 0.1.0
