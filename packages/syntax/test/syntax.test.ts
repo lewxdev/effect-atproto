@@ -2,7 +2,7 @@ import * as BunFileSystem from "@effect/platform-bun/BunFileSystem";
 import { assert, describe, it } from "@effect/vitest";
 import { Effect, FileSystem, Schema, Stream } from "effect";
 
-import { Did, Handle, Nsid, Rkey, Tid } from "../src/index.ts";
+import { AtIdentifier, AtUri, Did, Handle, Nsid, Rkey, Tid } from "../src/index.ts";
 
 const fixtureBaseUrl = new URL("../../../vendor/atproto-interop-tests/syntax/", import.meta.url);
 
@@ -30,6 +30,8 @@ const validate = Effect.fnUntraced(function*<T>(schema: Schema.Codec<T, string>,
 }, Effect.provide(BunFileSystem.layer));
 
 describe("syntax fixtures", () => {
+  it.effect("validates AT identifier vectors", () => validate(AtIdentifier.AtIdentifier, "atidentifier"));
+  it.effect("validates AT URI vectors", () => validate(AtUri.AtUriFromString, "aturi"));
   it.effect("validates DID vectors", () => validate(Did.Did, "did"));
   it.effect("validates handle vectors", () => validate(Handle.Handle, "handle"));
   it.effect("validates NSID vectors", () => validate(Nsid.Nsid, "nsid"));
