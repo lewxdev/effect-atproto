@@ -1,5 +1,15 @@
 # @effect-atproto/syntax
 
+## 0.2.0
+
+### Minor Changes
+
+- 35b871f: Add `AtIdentifier` and restricted `AtUri` syntax schemas.
+
+### Patch Changes
+
+- 77b9711: Improve syntax README examples and Markdown formatting.
+
 ## 0.1.1
 
 ### Patch Changes
