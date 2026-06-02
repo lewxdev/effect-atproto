@@ -17,90 +17,89 @@ bun add @effect-atproto/syntax effect
 Import the schema you need and use the standard `effect/Schema` helpers.
 
 ```ts
-import { Did } from "@effect-atproto/syntax";
+import { Did } from "@effect-atproto/syntax/Did";
 import * as Schema from "effect/Schema";
 ```
 
 ## Examples
 
-### AtIdentifier
+### `AtIdentifier`
 
 ```ts
 import { AtIdentifier } from "@effect-atproto/syntax/AtIdentifier";
 import * as Schema from "effect/Schema";
 
-const identifier = Schema.decodeUnknownSync(AtIdentifier)("Alice.Bsky.Social");
-// "alice.bsky.social"
+const identifier = Schema.decodeSync(AtIdentifier)("LEWX.DEV");
+// "lewx.dev"
 ```
 
-Spec: https://atproto.com/specs/at-uri-scheme#restricted-at-uri-syntax
+Spec: [Restricted AT URI syntax](https://atproto.com/specs/at-uri-scheme#restricted-at-uri-syntax)
 
-### AtUri
+### `AtUri`
 
-<!-- dprint-ignore -->
 ```ts
 import { AtUriFromString } from "@effect-atproto/syntax/AtUri";
 import * as Schema from "effect/Schema";
 
-const uri = Schema.decodeUnknownSync(AtUriFromString)("at://Alice.Bsky/COM.X.post/3jui");
-// { authority: "alice.bsky", collection: "com.x.post", rkey: "3jui" }
+const uri = Schema.decodeSync(AtUriFromString)("at://LEWX.DEV/APP.BSKY.FEED.post/3lfbegemqmc2v");
+// { authority: "lewx.dev", collection: "app.bsky.feed.post", rkey: "3lfbegemqmc2v" }
 ```
 
-Spec: https://atproto.com/specs/at-uri-scheme#restricted-at-uri-syntax
+Spec: [Restricted AT URI syntax](https://atproto.com/specs/at-uri-scheme#restricted-at-uri-syntax)
 
-### Did
+### `Did`
 
 ```ts
 import { Did } from "@effect-atproto/syntax/Did";
 import * as Schema from "effect/Schema";
 
-const did = Schema.decodeUnknownSync(Did)("did:plc:ewvi7nxzyoun6zhxrhs64oiz");
+const did = Schema.decodeSync(Did)("did:plc:5zcg3kb3yhfdh5xbpq7raf3p");
 ```
 
-Spec: https://atproto.com/specs/did
+Spec: [DID syntax](https://atproto.com/specs/did)
 
-### Handle
+### `Handle`
 
 ```ts
 import { Handle } from "@effect-atproto/syntax/Handle";
 import * as Schema from "effect/Schema";
 
-const handle = Schema.decodeUnknownSync(Handle)("Alice.Bsky.Social");
-// "alice.bsky.social"
+const handle = Schema.decodeSync(Handle)("LEWX.DEV");
+// "lewx.dev"
 ```
 
-Spec: https://atproto.com/specs/handle
+Spec: [Handle syntax](https://atproto.com/specs/handle)
 
-### Nsid
+### `Nsid`
 
 ```ts
 import { Nsid } from "@effect-atproto/syntax/Nsid";
 import * as Schema from "effect/Schema";
 
-const nsid = Schema.decodeUnknownSync(Nsid)("COM.Atproto.Sync.getRecord");
-// "com.atproto.sync.getRecord"
+const nsid = Schema.decodeSync(Nsid)("APP.BSKY.FEED.post");
+// "app.bsky.feed.post"
 ```
 
-Spec: https://atproto.com/specs/nsid
+Spec: [NSID syntax](https://atproto.com/specs/nsid)
 
-### Rkey
+### `Rkey`
 
 ```ts
 import { Rkey } from "@effect-atproto/syntax/Rkey";
 import * as Schema from "effect/Schema";
 
-const rkey = Schema.decodeUnknownSync(Rkey)("3jui7kd54zh2y");
+const rkey = Schema.decodeSync(Rkey)("3lfbegemqmc2v");
 ```
 
-Spec: https://atproto.com/specs/record-key
+Spec: [Record key syntax](https://atproto.com/specs/record-key)
 
-### Tid
+### `Tid`
 
 ```ts
 import { Tid } from "@effect-atproto/syntax/Tid";
 import * as Schema from "effect/Schema";
 
-const tid = Schema.decodeUnknownSync(Tid)("3jzfcijpj2z2a");
+const tid = Schema.decodeSync(Tid)("3jzfcijpj2z2a");
 ```
 
-Spec: https://atproto.com/specs/tid
+Spec: [TID syntax](https://atproto.com/specs/tid)
