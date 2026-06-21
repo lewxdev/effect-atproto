@@ -38,3 +38,14 @@ describe("syntax fixtures", () => {
   it.effect("validates record key vectors", () => validate(Rkey.Rkey, "recordkey"));
   it.effect("validates TID vectors", () => validate(Tid.Tid, "tid"));
 });
+
+describe("NSID regressions", () => {
+  it("rejects an authority longer than 253 characters", () => {
+    const authority = ["com", ...Array.from({ length: 3 }, () => "a".repeat(63)), "a".repeat(59)].join(".");
+    const nsid = `${authority}.x`;
+
+    assert.lengthOf(authority, 255);
+    assert.lengthOf(nsid, 257);
+    assert.strictEqual(Schema.decodeExit(Nsid.Nsid)(nsid)._tag, "Failure");
+  });
+});

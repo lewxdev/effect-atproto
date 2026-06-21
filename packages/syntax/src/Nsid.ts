@@ -55,6 +55,9 @@ export const Nsid: Schema.Codec<Nsid, string> = Function.pipe(
   }),
   Schema.check(
     Schema.isMaxLength(317),
+    Schema.makeFilter((nsid: string) => nsid.lastIndexOf(".") <= 253, {
+      expected: "an NSID authority at most 253 characters long",
+    }),
     Schema.isPattern(NSID_PATTERN, { expected: "a valid NSID" }),
   ),
   Schema.brand(NsidTypeId),
